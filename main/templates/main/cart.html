@@ -1,0 +1,89 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class=" d-flex justify-content-around">
+        {% if order is None %}
+            Your cart is empty
+        {% else %}
+        <div class="p-2">
+            <!--Grid row-->
+            {% for orderitem in order %}
+            {% with item=orderitem.item %}
+            <div class="row wow fadeIn">
+
+                        <div class="col col-md-4">
+                            <!--Card-->
+                            <div class="card">
+
+                                <!--Card image-->
+                                <div class="view overlay">
+                                    <img src="{{ item.image.url }}" class="card-img-top">
+                                    <a href="{{ item.get_absolute_url }}">
+                                        <div class="mask rgba-white-slight"></div>
+                                    </a>
+                                </div>
+                                <!--Card image-->
+
+                                <!--Card content-->
+                                <div class="card-body text-center">
+                                    <form method="post" action="addtocart">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary btn-sm " style="position: absolute; top: 0px; right: 0px">+</button>
+                                        <input type="hidden" name="item_id" value="{{ item.pk }}">
+                                    </form>
+                                    <form method="post" action="removefromcart">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-primary btn-sm " style="position: absolute; top: 0px; left: 0px">-</button>
+                                        <input type="hidden" name="item_id" value="{{ item.pk }}">
+                                    </form>
+                                    <!--Category & Title-->
+                                    <a href="" class="grey-text">
+                                        <h5>{{ item.get_category_display}}</h5>
+                                    </a>
+                                    <h5>
+                                        <strong>
+                                            <a href="" class="dark-grey-text">{{ item.name}}
+                                                <span class="badge badge-pill {{ item.get_label_display}}-color">NEW</span>
+                                            </a>
+                                        </strong>
+                                    </h5>
+
+                                    <h4 class="font-weight-bold blue-text">
+                                        <strong>${{ item.price }}</strong>
+                                    </h4>
+
+                                    <form action="/deletefromcart" method="POST">
+                                        {% csrf_token %}
+                                       <button type="submit" value="{{ orderitem.pk }}" name="item">
+                                          <img src="{% static 'img/svg/garbage-bin.svg' %}" height="20px" width="20px">
+                                       </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col col-md-auto wow fadeIn">
+                            <div class="card align-content" style="padding: 10px">
+                                <p style="margin-bottom: 0px"> {{ orderitem.quantity }} x {{ item.price }} = </p>
+                                <p style="margin-bottom: 0px" class="text-primary font-weight-bold "> {{ orderitem.total_cost }}$ </p>
+                            </div>
+                        </div>
+                    {% endwith %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class="p-2">
+            <div class="card" style="padding: 20px">
+            <span>Total costs are:</span>
+            <span>{{ total_cost }}$</span>
+            <form method="post" action="/placeanorder">
+                {% csrf_token %}
+                <button class="btn btn-primary" type="submit"> Make an order </button>
+            </form>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+{% endblock %}

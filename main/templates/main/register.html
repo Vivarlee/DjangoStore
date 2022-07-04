@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+
+
+{% block head %}
+    {% load static %}
+    <script src='{% static 'main/jscheck.js' %}'></script>
+{% endblock %}
+
+
+{% block title %}
+Registration
+{% endblock %}
+
+
+{% block content %}
+    <form method="post" action="/register">
+        {% csrf_token %}
+        <input type="text" name="username" id="username"><br>
+        <input type="password" name="password"><br>
+        <input type="email" name="email"><br>
+        <button type="submit" id="registerbutton">Зарегистрироваться</button>
+    <span id="userexists"></span>
+    </form>
+
+
+{% endblock %}
