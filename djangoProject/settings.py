@@ -84,7 +84,7 @@ MEDIA_ROOT = BASE_DIR / 'xmedia'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': "shopdb",
+        'NAME': "calcdb",
         'USER': "postgres",
         "PASSWORD": "11",
         "HOST": "localhost",

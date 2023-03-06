@@ -1,25 +1,22 @@
-from .models import Item
+from .models import Functions
 from django.forms import ModelForm, TextInput, Textarea, FileInput
 
 
-class ItemsForm(ModelForm):
+class FunctionsForm(ModelForm):
     class Meta:
-        model = Item
-        fields = ["name", "price", "about", "image"]
+        model = Functions
+        fields = ["name", "about"]
         widgets = {
             "name": TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Введите наименование товара'
-            }),
-            "price": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Введите цену товара'
+                'placeholder': 'Введите название функции'
             }),
             "about": Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Введите описание товара'
+                'placeholder': 'Введите описание функции'
             }),
-            "image": FileInput(attrs={
-
-            })
+            # "func": FileInput(attrs={
+            #     'class': 'form-control',
+            #     'placeholder': 'Введите функцию'
+            # })
         }

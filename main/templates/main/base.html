@@ -10,7 +10,7 @@
     <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Продукты онлайн</title>
+  <title>Калькулятор онлайн</title>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <!-- Bootstrap core CSS -->
@@ -51,23 +51,10 @@
           <li class="nav-item active">
             <a class="nav-link waves-effect" href="{% url 'about' %}">About</a>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link waves-effect" href="{% url 'editor' %}">Edit Items</a>
-          </li>
-            <li class="nav-item active">
-            <a class="nav-link waves-effect" href="{% url 'shop' %}">Shop</a>
-          </li>
         </ul>
 
         <!-- Right -->
         <ul class="navbar-nav nav-flex-icons">
-          <li class="nav-item active">
-            <a class="nav-link waves-effect" href="{% url 'cart' %}">
-              <span id="items-in-cart" class="badge red z-depth-1 mr-1"> {{ cart_amount }} </span>
-              <i class="fas fa-shopping-cart"></i>
-              <span class="clearfix d-none d-sm-inline-block"> cart </span>
-            </a>
-          </li>
           <li class="nav-item active">
             <a href="{% url 'login' %}" class="nav-link border border-light rounded waves-effect">Login</a>
           </li>
