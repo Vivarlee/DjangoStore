@@ -1,16 +1,15 @@
 import datetime
-
+from .NumMeth import *
 from django.contrib.auth import login as logindj, authenticate, logout
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.decorators.http import require_POST
 from django.views.generic import CreateView
-from django.contrib.auth.models import User,Group
-from .models import Functions  #Item, Order
+from django.contrib.auth.models import User, Group
+from .models import Functions  # Item, Order
 from .forms import FunctionsForm
 from django.http import HttpResponse, JsonResponse, HttpResponseForbidden
 import json
-
 
 # NOT A VIEW, TOO LAZY TO PUT THIS IN A PROPER PLACE
 '''
@@ -29,24 +28,13 @@ def get_cart_items_amount(user):
         return amount
 '''
 
+
 def index(request):
-    return render(request,'main/index.html')
+    return render(request, 'main/index.html')
 
 
 def about(request):
-    return render(request,'main/about.html')
-
-
-# def shop(request):
-#     context = {
-#         'items': Item.objects.all(),
-#         'cart_amount': get_cart_items_amount(request.user)
-#     }
-#
-#     return render(request, 'main/home-page.html',context)
-
-
-
+    return render(request, 'main/about.html')
 
 
 def login(request):
@@ -61,9 +49,10 @@ def login(request):
 
 def register(request):
     if request.method == 'POST' and not User.objects.filter(username=request.POST["username"]).exists():
-        vertobussy = User.objects.create_user(username=request.POST['username'],password=request.POST['password'],email=request.POST['email'])
+        vertobussy = User.objects.create_user(username=request.POST['username'], password=request.POST['password'],
+                                              email=request.POST['email'])
         vertobussy.save()
-        logindj(request,vertobussy)
+        logindj(request, vertobussy)
         return redirect('home')
     return render(request, 'main/register.html')
 
@@ -77,4 +66,20 @@ def checkusername(request):
 
 
 def sample_view(request):
-    return render(request,'main/base.html',{'current_user': request.user.username})
+    return render(request, 'main/base.html', {'current_user': request.user.username})
+
+
+def calculator(request):
+    return render(request, 'main/calculator.html')
+
+
+def calcGauss(request):
+    print(request.GET)
+    n = int(request.GET['dim'])
+    values=list(map(int,request.GET['values'].split(',')))
+    matrix=[]
+    for i in range(n):
+        matrix.append([values[i*3],values[i*3+1],values[i*3+2]])
+        
+
+    return JsonResponse(data={'result':Gauss(n,matrix)})

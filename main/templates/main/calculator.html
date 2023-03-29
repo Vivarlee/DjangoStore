@@ -1,0 +1,16 @@
+{% extends 'main/base.html' %}
+{% block head %}
+    {% load static %}
+    <script src="{% static 'js/gauss.js' %}"></script>
+{% endblock %}
+    {% block content %}
+    <div action="/calc/gauss" method="get" id="gauss">
+        <p>Gauss elimination</p><br>
+       <div class="flex">
+           <input type="number" name="dim" id="dim" min="1"><br>
+           <p id="answer"></p>
+       </div>
+        <button id="bub" >Log In</button><br>
+    </div>
+
+{% endblock %}
