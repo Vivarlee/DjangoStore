@@ -1,7 +1,6 @@
 import numpy as np
 
-def Gauss(n,a):
-   #It works
+def Gauss(n, a):
     x = np.zeros(n)
     print(a)
     # Applying Gauss Elimination
@@ -27,6 +26,5 @@ def Gauss(n,a):
     print('\nRequired solution is: ')
     for i in range(n):
         print('X%d = %0.2f' % (i, x[i]), end='\t')
-
+    # Returning solution
     return x.tolist()
-#def

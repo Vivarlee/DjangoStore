@@ -1,6 +1,7 @@
 {% extends 'main/base.html' %}
 {% block head %}
     {% load static %}
+    <link href="{% static 'css/stylecalc.css' %}" rel="stylesheet">
     <script src="{% static 'js/gauss.js' %}"></script>
 {% endblock %}
     {% block content %}
@@ -8,9 +9,9 @@
         <p>Gauss elimination</p><br>
        <div class="flex">
            <input type="number" name="dim" id="dim" min="1"><br>
-           <p id="answer"></p>
+           <h3 id="answer"></h3>
        </div>
-        <button id="bub" >Log In</button><br>
+        <button id="bub" >Submit</button><br>
     </div>
 
 {% endblock %}

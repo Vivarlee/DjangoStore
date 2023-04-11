@@ -51,7 +51,7 @@ async function submit(ev)
         headers:{}
     })
     let data= await response.json()
-    console.log(data)
+    document.getElementById('answer').innerText=data.result
 }
 
 window.onload=function ()
