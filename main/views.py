@@ -75,11 +75,16 @@ def calculator(request):
 
 def calcGauss(request):
     print(request.GET)
-    n = int(request.GET['dim'])
+    rows, columns = map(int, request.GET['dim'].split(','))
     values=list(map(int,request.GET['values'].split(',')))
     matrix=[]
-    for i in range(n):
-        matrix.append([values[i*3],values[i*3+1],values[i*3+2]])
-        
+    for i in range(rows):
+        matrix.append([])
+        for j in range(columns):
+            matrix[-1].append(values[i*columns + j])
 
-    return JsonResponse(data={'result':Gauss(n,matrix)})
+    try:
+        result = Gauss(rows,matrix)
+    except ZeroDivisionError:
+        result = "Division By Zero occured"
+    return JsonResponse(data={'result': result})

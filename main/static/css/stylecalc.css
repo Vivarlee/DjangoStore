@@ -1,9 +1,66 @@
-.flex
-{
+#gauss {
+    width: fit-content;
+    margin: auto;
+    margin-top: 25vh;
+}
+
+h1 {
+    text-align: center;
+}
+
+#matrix {
+    position: relative;
+    width: fit-content;
+    min-width: 200px;
+    margin-bottom: 80px;
+}
+
+#matrix input {
+    font-size: 1.5rem;
+}
+
+/* .matrix-controller {
+    border: 1px;
+    border-radius: 10px;
+    border-style: solid;
+    width: fit-content;
+} */
+
+.row {
+    display: flex;
+    flex-flow: row;
+    column-gap: 10px;
+    margin-bottom: 10px;
+}
+
+.row input {
+    max-width: 100px;
+}
+
+#column-controller {
+    position: absolute;
+    left: 110%;
+    top: 0;
+    display: flex;
+    flex-flow: column;
+}
+
+#row-controller {
+    position: absolute;
+    top: 110%;
     display: flex;
     flex-flow: row;
 }
-.flex h3
-{
-    margin-left: 20px;
+
+#answer-container {
+    max-width: 300px;
+    position: absolute;
+    left: -300px;
+    top: -50px;
+}
+
+#bub {
+    font-size: 1.5rem;
+    padding: 10px;
+    text-transform: none;
 }
