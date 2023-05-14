@@ -1,0 +1,30 @@
+{% extends 'main/calc_base.html' %}
+
+{% block head %}
+{% load static %}
+<script src="{% static 'js/newton.js' %}"></script>
+<link href="{% static 'css/stylecalc.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+{% block name %}
+<h1>{{name}}</h1>
+{% endblock %}
+<div id="answer-container">
+    <h2>Answer:</h3>
+    <h3 id="answer"></h3>
+</div>
+<div id="data">
+    <div id="formula" class="simple-container">
+        <div id="formula-inputs">
+            <span class="formula-text">𝑓(𝑥) =</span>
+            <input type="text" class="formula-input" id="expression-input">
+            <span class="formula-text">𝑥<sub>0</sub> = </span>
+            <input class="formula-input" type="text" id="x0">
+            <span class="formula-text">ε =</span>
+            <input class="formula-input" type="text" id="epsilon" value="0.001">
+        </div>
+        <button class="btn" onclick="submit(event)">Submit</button>
+    </div>
+</div>
+{% endblock %}

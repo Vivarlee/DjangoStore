@@ -1,0 +1,8 @@
+{% extends 'main/linear.html' %}
+{% block head %}
+    {% load static %}
+    <link href="{% static 'css/stylecalc.css' %}" rel="stylesheet">
+    <script src="{% static 'js/gauss.js' %}"></script>
+{% endblock %}
+
+{% block name %} Gaussian elimination {% endblock %}

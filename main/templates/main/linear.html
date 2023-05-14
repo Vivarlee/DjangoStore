@@ -1,0 +1,40 @@
+{% extends 'main/calc_base.html' %}
+{% block head %}
+{% load static %}
+<link href="{% static 'css/stylecalc.css' %}" rel="stylesheet">
+<script src="{% static 'js/linear.js' %}"></script>
+<script>
+    let calc_url = '{{ calc_url }}'
+</script>
+{% endblock %}
+
+{% block content %}
+<h1> {% block name %} {{ name }} {% endblock %}</h1>
+<div id="answer-container">
+    <h2 style="text-align: left;">Answer:</h1>
+        <h3 id="answer"></h3>
+</div>
+<div class="outer-container" style="width: fit-content; margin: auto;">
+    <div id="data" class="simple-container linear">
+        <div>
+            <div id="matrix">
+
+            </div>
+            <div id="row-controller" class="matrix-controller">
+                <button class="btn" onclick="addRow()">+</button>
+                <button class="btn" onclick="removeRow()">-</button>
+            </div>
+        </div>
+        <div id="column-controller" class="matrix-controller">
+            <button class="btn" onclick="addColumn()">+</button>
+            <button class="btn" onclick="removeColumn()">-</button>
+        </div>
+        <button id="bub" class="btn btn-large">Submit</button>
+
+    </div>
+    <div class="alert alert-danger" id="error-message" hidden>
+        Bottom text
+    </div>
+</div>
+
+{% endblock %}

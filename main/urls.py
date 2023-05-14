@@ -10,16 +10,14 @@ urlpatterns = [
     path('login', views.login, name='login'),
     path('register', views.register, name='register'),
     path('checkusername', views.checkusername, name='checkusername'),
-    path('calculator', views.calculator, name='calc'),
-    path('calc/gauss',views.calcGauss, name='Gauss'),
-    # path('shop', views.shop, name='shop'),
-    # path('editor', views.editor, name='editor'),
-    # path('cart', views.cart, name='cart'),
-    # path('deleteitem', views.delete_item, name='deleteitem'),
-    # path('addtocart', views.add_to_cart, name="addtocart"),
-    # path('removefromcart', views.remove_from_cart, name='removefromcart'),
-    # path('deletefromcart', views.delete_from_cart, name="renivefromcart"),
-    # path('placeanorder', views.place_order, name="placeorder"),
+    path('calculator', views.calculator, name='gauss'),
+    path('calc/gauss',views.calc_gauss, name='calc_gauss'),
+    path('newton', views.newton, name='newton'),
+    path('calc/newton', views.calc_newton, name='calc_newton'),
+    path('jacobi', views.jacobi, name='jacobi'),
+    path('calc/jacobi', views.calc_jacobi, name='calc_jacobi'),
+    path('seidel', views.seidel, name='seidel'),
+    path('calc/seidel', views.calc_seidel, name='calc_seidel')
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.DEBUG:

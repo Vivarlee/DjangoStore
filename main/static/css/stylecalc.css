@@ -1,22 +1,92 @@
-#gauss {
-    width: fit-content;
-    margin: auto;
-    margin-top: 25vh;
+* {
+    --container-color: rgb(253, 205, 253);
 }
 
 h1 {
     text-align: center;
 }
 
+#data {
+    position: relative;
+    width: fit-content;
+    margin: auto;
+    margin-top: 10vh;
+}
+
+.outer-container>.alert {
+    margin-top: 2.5vh;
+}
+
+.linear {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+    column-gap: 20px;
+}
+.linear .btn {
+    grid-column: 2;
+}
+
 #matrix {
     position: relative;
     width: fit-content;
     min-width: 200px;
-    margin-bottom: 80px;
 }
 
 #matrix input {
     font-size: 1.5rem;
+}
+
+.b {
+    margin-left: 50px;
+}
+
+.simple-container {
+    padding: 20px;
+    background-color: var(--container-color);
+    border-radius: 10px;
+}
+
+#formula {
+    display: flex;
+    column-gap: 2.5vh;
+}
+
+#formula-inputs {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(2, auto);
+    row-gap: 5vh;
+}
+
+#expression-input {
+    grid-column: 2 / 5;
+}
+
+.btn {
+    background-color: rgb(217, 176, 255)!important;
+}
+
+#formula button {
+    font-size: 1.5em;
+    padding: 20px;
+}
+
+#formula input {
+    font-size: 2em;
+    font-weight: normal;
+    width: 19vw;
+    min-width: 200px;
+}
+
+.formula-text {
+    font-size: 2em;
+    font-weight: 400;
+}
+
+#x0, #epsilon {
+    width: 5ch!important;
+    min-width: 5ch!important;
 }
 
 /* .matrix-controller {
@@ -35,28 +105,28 @@ h1 {
 
 .row input {
     max-width: 100px;
+    aspect-ratio: 2 / 1;
 }
 
 #column-controller {
-    position: absolute;
-    left: 110%;
-    top: 0;
     display: flex;
     flex-flow: column;
 }
 
 #row-controller {
-    position: absolute;
-    top: 110%;
     display: flex;
     flex-flow: row;
+    margin-bottom: 40px;
+    margin-left: -15px;
 }
 
 #answer-container {
     max-width: 300px;
-    position: absolute;
-    left: -300px;
-    top: -50px;
+    padding: 10px;
+    min-height: 110px;
+    margin-bottom: 100px;
+    background-color: var(--container-color);
+    border-radius: 10px;
 }
 
 #bub {

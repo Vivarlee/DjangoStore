@@ -3,11 +3,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <script>var csrf_token = '{{csrf_token}}'</script>
-    {% block head %}
-    {% endblock %}
-    <meta charset="utf-8">
+  <script>var csrf_token = '{{csrf_token}}'</script>
+  {% block head %}
+  {% endblock %}
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>Калькулятор онлайн</title>
@@ -15,18 +16,19 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
   <!-- Bootstrap core CSS -->
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <link href="{% static 'css/bootstrap-grid.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/bootstrap-grid.min.css' %}" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
 
   </style>
 </head>
 
 <body>
-<!-- Navbar -->
+  <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
     <div class="container">
 
@@ -51,8 +53,8 @@
           <li class="nav-item active">
             <a class="nav-link waves-effect" href="{% url 'about' %}">About</a>
           </li>
-             <li class="nav-item active">
-            <a class="nav-link waves-effect" href="{% url 'calc' %}">Calculator</a>
+          <li class="nav-item active">
+            <a class="nav-link waves-effect" href="{% url 'gauss' %}">Calculator</a>
           </li>
         </ul>
 
@@ -67,7 +69,13 @@
 
     </div>
   </nav>
-<br><br><br>
-{% block content %}{% endblock %}
+  <br><br><br>
+  <div id="main-content">
+    {% block sidemenu %}{% endblock %}
+    <div style="flex-grow: 2;">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
 </body>
+
 </html>

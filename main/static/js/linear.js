@@ -1,4 +1,4 @@
-// gauss.js and linear.js are extremely similar and should be merged later
+// get url from external var calc_url
 
 var currDim=1
 var rows = 0  // It's 0 at the start because we use addRow() in the code later to make an initial matrix
@@ -64,14 +64,15 @@ function removeColumn()
 
 async function submit(ev)
 {
-    let arr=[['dim',[rows, columns]],['values',[]]]
+    let arr=[['dim',[rows, columns]],['values',[]], ['b', []]]
     let matrix = document.getElementById('matrix')
     for (const row of matrix.children) {
-        for (const element of row.children) {
-            arr[1][1].push(element.value)
+        for (let i = 0; i < row.children.length - 1; i++) {
+            arr[1][1].push(row.children[i].value)
         }
+        arr[2][1].push(row.children[row.children.length - 1].value)
     }
-    let response=await fetch('/calc/gauss?'+new URLSearchParams(arr),{
+    let response=await fetch(calc_url + '?'+new URLSearchParams(arr),{
         method:'get',
         headers:{}
     })
